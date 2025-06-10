@@ -6,7 +6,6 @@ import {
   BarChart3,
   BookOpen,
   Calendar,
-  BadgeIcon as Certificate,
   Clock,
   GraduationCap,
   Settings,
@@ -26,15 +25,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { DashboardSidebar } from "@/components/dashboard-sidebar"
+// import { DashboardSidebar } from "@/components/dashboard-sidebar"
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview")
-  
+
   return (
     <div className="flex min-h-screen bg-gray-50">
-      <DashboardSidebar />
-      
+      {/* <DashboardSidebar /> */}
+
       <div className="flex-1 p-4 md:p-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
           <div>
@@ -43,9 +42,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" asChild>
-              <Link href="/courses">
-                Browse Courses
-              </Link>
+              <Link href="/courses">Browse Courses</Link>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -73,7 +70,7 @@ export default function DashboardPage() {
             </DropdownMenu>
           </div>
         </div>
-        
+
         <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -81,78 +78,64 @@ export default function DashboardPage() {
             <TabsTrigger value="certificates">Certificates</TabsTrigger>
             <TabsTrigger value="schedule">Schedule</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="overview" className="space-y-4">
-            {/* Progress Summary */}
+            {/* Summary Cards */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Courses Enrolled
-                  </CardTitle>
+                  <CardTitle className="text-sm font-medium">Courses Enrolled</CardTitle>
                   <BookOpen className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">4</div>
-                  <p className="text-xs text-muted-foreground">
-                    +1 from last month
-                  </p>
+                  <p className="text-xs text-muted-foreground">+1 from last month</p>
                 </CardContent>
               </Card>
+
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Completed Courses
-                  </CardTitle>
-                  <Certificate className="h-4 w-4 text-muted-foreground" />
+                  <CardTitle className="text-sm font-medium">Completed Courses</CardTitle>
+                  <BookOpen className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">2</div>
-                  <p className="text-xs text-muted-foreground">
-                    +1 from last month
-                  </p>
+                  <p className="text-xs text-muted-foreground">+1 from last month</p>
                 </CardContent>
               </Card>
+
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Hours Spent
-                  </CardTitle>
+                  <CardTitle className="text-sm font-medium">Hours Spent</CardTitle>
                   <Clock className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">36.5</div>
-                  <p className="text-xs text-muted-foreground">
-                    +12.4 from last month
-                  </p>
+                  <p className="text-xs text-muted-foreground">+12.4 from last month</p>
                 </CardContent>
               </Card>
+
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    Upcoming Sessions
-                  </CardTitle>
+                  <CardTitle className="text-sm font-medium">Upcoming Sessions</CardTitle>
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">3</div>
-                  <p className="text-xs text-muted-foreground">
-                    Next: Today at 4:00 PM
-                  </p>
+                  <p className="text-xs text-muted-foreground">Next: Today at 4:00 PM</p>
                 </CardContent>
               </Card>
             </div>
-            
+
             {/* Current Courses */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               <Card className="md:col-span-2">
                 <CardHeader>
                   <CardTitle>Current Courses</CardTitle>
-                  <CardDescription>
-                    Your active course progress
-                  </CardDescription>
+                  <CardDescription>Your active course progress</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                  {/* Course 1 */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -172,7 +155,8 @@ export default function DashboardPage() {
                       <div>5 weeks left</div>
                     </div>
                   </div>
-                  
+
+                  {/* Course 2 */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -199,13 +183,12 @@ export default function DashboardPage() {
                   </Button>
                 </CardFooter>
               </Card>
-              
+
+              {/* Upcoming Sessions */}
               <Card>
                 <CardHeader>
                   <CardTitle>Upcoming Sessions</CardTitle>
-                  <CardDescription>
-                    Your scheduled live sessions
-                  </CardDescription>
+                  <CardDescription>Your scheduled live sessions</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
@@ -218,9 +201,6 @@ export default function DashboardPage() {
                         <div className="text-xs text-muted-foreground">Today, 4:00 PM - 5:30 PM</div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
                         <Calendar className="h-4 w-4 text-primary" />
@@ -230,9 +210,6 @@ export default function DashboardPage() {
                         <div className="text-xs text-muted-foreground">Tomorrow, 2:00 PM - 4:00 PM</div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
                         <Calendar className="h-4 w-4 text-primary" />
@@ -251,14 +228,12 @@ export default function DashboardPage() {
                 </CardFooter>
               </Card>
             </div>
-            
+
             {/* Recommended Courses */}
             <Card>
               <CardHeader>
                 <CardTitle>Recommended For You</CardTitle>
-                <CardDescription>
-                  Based on your interests and current courses
-                </CardDescription>
+                <CardDescription>Based on your interests and current courses</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -270,13 +245,11 @@ export default function DashboardPage() {
                       <div className="font-medium">Advanced JavaScript Patterns</div>
                       <div className="text-xs text-muted-foreground mb-2">8 weeks • Intermediate</div>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="/courses/advanced-javascript-patterns">
-                          View Course
-                        </Link>
+                        <Link href="/courses/advanced-javascript-patterns">View Course</Link>
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-2 p-3 border rounded-lg">
                     <div className="w-12 h-12 rounded bg-primary/10 flex items-center justify-center shrink-0">
                       <BookOpen className="h-6 w-6 text-primary" />
@@ -285,16 +258,29 @@ export default function DashboardPage() {
                       <div className="font-medium">Machine Learning Fundamentals</div>
                       <div className="text-xs text-muted-foreground mb-2">10 weeks • Intermediate</div>
                       <Button variant="outline" size="sm" className="w-full" asChild>
-                        <Link href="/courses/machine-learning-fundamentals">
-                          View Course
-                        </Link>
+                        <Link href="/courses/machine-learning-fundamentals">View Course</Link>
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-2 p-3 border rounded-lg">
                     <div className="w-12 h-12 rounded bg-primary/10 flex items-center justify-center shrink-0">
                       <BookOpen className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <div className="font-medium">DevOps & CI/CD Pipeline\
+                      <div className="font-medium">DevOps & CI/CD Pipeline</div>
+                      <div className="text-xs text-muted-foreground mb-2">9 weeks • Intermediate</div>
+                      <Button variant="outline" size="sm" className="w-full" asChild>
+                        <Link href="/courses/devops-ci-cd-pipeline">View Course</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  )
+}
